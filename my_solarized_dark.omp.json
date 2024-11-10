@@ -22,9 +22,16 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "text",
+          "style": "diamond",
+          "foreground": "p:bgcolor01",
+          "background": "transparent",
+          "template": "\u256d\u2500"
+        },
+        {
           "type": "session",
           "style": "diamond",
-          "leading_diamond": "\u256d\u2500\ue0b6",
+          "leading_diamond": "\ue0b6",
           "foreground": "p:text00",
           "background": "p:bgcolor00",
           "template": "{{ .UserName }}"
@@ -136,7 +143,7 @@
         {
           "type": "text",
           "style": "diamond",
-          "foreground": "p:bgcolor00",
+          "foreground": "p:bgcolor01",
           "template": "\u2570\u2500"
         },
         {
