@@ -46,7 +46,7 @@
         {
           "type": "command",
           "style": "diamond",
-          "foreground": "p:text00",
+          "foreground": "p:text01",
           "background": "p:bgcolor00",
           "template": ":<b>{{ .Output }}</b> ",
           "properties": {
