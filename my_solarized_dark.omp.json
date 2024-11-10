@@ -1,14 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "txt_light": "#96a1a1",
-    "bg_default": "#445d63",
-    "bg_bright": "#96a1a1",
+    "txt_light": "#93a1a1",
+    "bg_default":"#586e75",
+    "bg_bright": "#839496",
+    "black": "#002b36",
     "white": "#E0DEF4",
-    "red": "#cb4239",
-    "yellow": "#f3AE35",
-    "green": "#859900",
-    "blue": "#448acc"
+    "yellow": "#b58900",
+    "orange": "#cb4b16",
+    "red": "#dc322f",
+    "magenta": "#d33682",
+    "violet": "#6c71c4",
+    "blue": "#268bd2",
+    "cyan": "#2aa198",
+    "green": "#859900"
   },
   "blocks": [
     {
@@ -62,7 +67,7 @@
           "type": "git",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
-          "template": " {{ .UpstreamIcon }}<b>{{ .HEAD }}</b>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<p:yellow> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<> \uf046 {{ .Staging.String }}</>{{ end }}",
+          "template": " {{ .UpstreamIcon }}<b>{{ .HEAD }}</b>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<p:black> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<> \uf046 {{ .Staging.String }}</>{{ end }}",
           "foreground": "p:white",
           "background": "p:green",
           "background_templates": [
@@ -87,7 +92,7 @@
           "leading_diamond": "\ue0b6",
           "background": "p:red",
           "foreground": "p:white",
-          "template": "{{if .Env.BG_JOBS}}\u2622{{.Env.BG_JOBS}} {{end}}"
+          "template": "{{if .Env.BG_JOBS}}\ufe60{{.Env.BG_JOBS}} {{end}}"
         },
         {
           "type": "time",
