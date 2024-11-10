@@ -1,9 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "txt_light": "#93a1a1",
-    "bg_default":"#586e75",
-    "bg_bright": "#839496",
+    "text00": "#697a82",
+    "text01": "#96a1a1",
+    "bgcolor00": "#173541",
+    "bgcolor01": "#3b4c53",
     "black": "#002b36",
     "white": "#E0DEF4",
     "yellow": "#b58900",
@@ -24,29 +25,29 @@
           "type": "session",
           "style": "diamond",
           "leading_diamond": "\u256d\u2500\ue0b6",
-          "foreground": "transparent",
-          "background": "p:bg_default",
+          "foreground": "p:text00",
+          "background": "p:bgcolor00",
           "template": "{{ .UserName }}"
         },
         {
           "type": "text",
           "style": "diamond",
-          "foreground": "transparent",
-          "background": "p:bg_default",
+          "foreground": "p:bgcolor01",
+          "background": "p:bgcolor00",
           "template": " <i>@</i> "
         },
         {
           "type": "session",
           "style": "diamond",
-          "foreground": "transparent",
-          "background": "p:bg_default",
+          "foreground": "p:text00",
+          "background": "p:bgcolor00",
           "template": "{{ .HostName }}"
         },
         {
           "type": "command",
           "style": "diamond",
-          "foreground": "p:txt_light",
-          "background": "p:bg_default",
+          "foreground": "p:text00",
+          "background": "p:bgcolor00",
           "template": ":<b>{{ .Output }}</b> ",
           "properties": {
               "command": "ps -otty= $$"
@@ -56,8 +57,8 @@
           "type": "path",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
-          "background": "p:bg_bright",
-          "foreground": "transparent",
+          "foreground": "p:text01",
+          "background": "p:bgcolor01",
           "template": " <b>{{ .Path }}</b>",
           "properties": {
             "style": "full"
@@ -99,8 +100,8 @@
           "style": "diamond",
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b4",
-          "foreground": "transparent",
-          "background": "p:bg_default",
+          "foreground": "p:text00",
+          "background": "p:bgcolor00",
           "template": "{{ .CurrentDate | date .Format }}",
           "properties": {
             "time_format": "2006-01-02 15:04:05"
@@ -110,11 +111,14 @@
           "type": "battery",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
-          "foreground": "p:white",
-          "background": "p:bg_bright",
+          "foreground": "p:text01",
+          "background": "p:bgcolor01",
           "template": " {{if eq \"Discharging\" .State.String}}{{ if not .Error }}{{ .Icon }}{{ .Percentage }}%{{ end }}{{end}}",
           "background_templates": [
             "{{if eq \"Discharging\" .State.String}}{{if le .Percentage 10}}p:red{{else}}{{if le .Percentage 20}}p:yellow{{end}}{{end}}{{end}}"
+          ],
+          "foreground_templates": [
+            "{{if eq \"Discharging\" .State.String}}{{if le .Percentage 20}}p:white{{end}}{{end}}"
           ],
           "properties": {
             "discharging_icon": " ",
@@ -132,13 +136,13 @@
         {
           "type": "text",
           "style": "diamond",
-          "foreground": "p:bg_default",
+          "foreground": "p:bgcolor00",
           "template": "\u2570\u2500"
         },
         {
           "type": "shell",
           "style": "diamond",
-          "foreground": "p:txt_light",
+          "foreground": "p:text00",
           "template": " {{ .Name }}"
         },
         {
@@ -150,7 +154,7 @@
         {
           "type": "text",
           "style": "diamond",
-          "foreground": "p:txt_light",
+          "foreground": "p:text00",
           "template": " \u276f"
         }
       ]
