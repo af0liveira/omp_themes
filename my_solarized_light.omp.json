@@ -34,21 +34,7 @@
           "leading_diamond": "\ue0b6",
           "foreground": "p:text00",
           "background": "p:bgcolor00",
-          "template": "{{ .UserName }}"
-        },
-        {
-          "type": "text",
-          "style": "diamond",
-          "foreground": "p:bgcolor01",
-          "background": "p:bgcolor00",
-          "template": " <i>@</i> "
-        },
-        {
-          "type": "session",
-          "style": "diamond",
-          "foreground": "p:text00",
-          "background": "p:bgcolor00",
-          "template": "{{ .HostName }}"
+          "template": "{{ .UserName }}{{ if .HostName }}<p:bgcolor01><i>@</i></>{{ .HostName }}{{ end }}"
         },
         {
           "type": "command",
