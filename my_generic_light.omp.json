@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "text00": "#869496",
+    "text01": "#5d6d74",
+    "black": "#002b36",
+    "white": "#E0DEF4",
+    "yellow": "#b58900",
+    "orange": "#cb4b16",
+    "red": "#dc322f",
+    "magenta": "#d33682",
+    "violet": "#6c71c4",
+    "blue": "#268bd2",
+    "cyan": "#2aa198",
+    "green": "#859900"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:text00",
+          "template": "\u256d\u2500 "
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "p:text00",
+          "template": "{{ .UserName }}{{ if .HostName }}  {{ .HostName }}{{ end }}"
+        },
+        {
+          "type": "command",
+          "style": "plain",
+          "foreground": "p:text00",
+          "template": ":<b>{{ .Output }}</b> ",
+          "properties": {
+              "command": "ps -otty= $$"
+          }
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "background": "transparent",
+          "foreground": "p:text01",
+          "template": "<b>\uf115 {{ .Path }}</b>",
+          "properties": {
+            "style": "full",
+            "right_format": "%s/",
+            "folder_icon": "\uf115"
+          }
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "template": " <b>{{ .UpstreamIcon }} {{ .HEAD }}</b>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<> \uf046 {{ .Staging.String }}</>{{ end }}",
+          "foreground": "transparent",
+          "background": "p:green",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:red{{ end }}",
+            "{{ if or (gt .Ahead 0) (gt .Behind 0) }}p:blue{{ end }}"
+          ],
+          "properties": {
+            "branch_max_length": 30,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "background": "p:red",
+          "foreground": "transparent",
+          "template": "{{if .Env.BG_JOBS}}\udb81\udcb2 {{.Env.BG_JOBS}} {{end}}"
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:text00",
+          "background": "transparent",
+          "template": "{{ .CurrentDate | date .Format }}",
+          "properties": {
+            "time_format": "2006-01-02 15:04:05"
+          }
+        },
+        {
+          "type": "battery",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "transparent",
+          "background": "p:text00",
+          "template": " {{if eq \"Discharging\" .State.String}}{{ if not .Error }}{{ if le .Percentage 5 }}\uf244{{ else if le .Percentage 50 }}\uf243{{ else if le .Percentage 75 }}\uf242{{ else if le .Percentage 90}}\uf241{{ else }}\uf240{{end}} {{ .Percentage }}%{{ end }}{{end}}",
+          "background_templates": [
+            "{{if eq \"Discharging\" .State.String}}{{if le .Percentage 10}}p:red{{else}}{{if le .Percentage 20}}p:yellow{{end}}{{end}}{{end}}"
+          ],
+          "properties": {
+            "discharging_icon": " ",
+            "charging_icon": "",
+            "charged_icon": " "
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "foreground": "p:text00",
+          "template": "\u2570\u2500"
+        },
+        {
+          "type": "shell",
+          "style": "plain",
+          "foreground": "p:text00",
+          "template": "  {{ .Name }}"
+        },
+        {
+          "type": "python",
+          "style": "diamond",
+          "foreground": "p:yellow",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "foreground": "p:text00",
+          "template": " \u276f"
+        }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 3
+}
